@@ -1,7 +1,7 @@
 <div class="text-center">
   <h1 class="text-4xl font-bold text-blue-500 mb-4">SQLite3 + HTMX Demo</h1>
 
-  <form hx-post="/posts" hx-target="#post-list" hx-swap="beforeend" class="mb-4">
+  <form hx-post="/posts" hx-target="#post-list" hx-swap="afterbegin" class="mb-4">
     <input type="text" name="title" placeholder="New Post" class="p-2 border rounded">
     <button class="px-4 py-2 bg-blue-500 text-white rounded">Add Post</button>
   </form>
@@ -10,5 +10,25 @@
     <% @posts.each do |post| %>
       <%= render partial: "posts/post", locals: { post: post } %>
     <% end %>
+  </ul>
+</div>
+
+<div class="ml-32 mt-6">
+  <h1 class="text-2xl">
+    Search
+    <span class="htmx-indicator">
+      <%= image_tag "search-plus-svgrepo-com.svg", size: 20 %> 
+      Searching...
+    </span>
+
+  </h1>
+  <input type="search" class="p-2 border rounded"
+        name="search" placeholder="Begin Typing To Search..."
+        hx-post="/search"
+        hx-trigger="input changed delay:500ms, keyup[key=='Enter'], load"
+        hx-target="#search-results"  
+        hx-indicator=".htmx-indicator">
+
+  <ul id="search-results">
   </ul>
 </div>

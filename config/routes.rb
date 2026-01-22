@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   root "home#index"
-  resources :posts, only: [:create]
+  resources :posts, only: [ :create ]
 
+  post "/search", to: "home#search"
 end

@@ -7,3 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+Post.create!(title: "First Post")
+Post.create!(title: "Hello, SQLite!")
+Post.create!(title: "HTMX + Rails 8 + SQLite Demo")
+
